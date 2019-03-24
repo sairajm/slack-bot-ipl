@@ -63,9 +63,13 @@ def is_status_not_empty(status):
 
 
 def get_game_scores(match, matches):
+    bowling = ""
     scores = matches[match]['score']
     batting = scores['batting']['score']
-    bowling = scores['bowling']['score']
+    try:
+        bowling = scores['bowling']['score']
+    except KeyError:
+        print("Bowling scores not available at this time")
     game_status = matches[match]['status']
     return batting, bowling, game_status
 
